@@ -7,31 +7,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 
   <style>
-    :root {
-      --cream:      #f8f4ef;
-      --warm-white: #fdfaf6;
-      --sand:       #e8ddd0;
-      --linen:      #d4c4b0;
-      --terracotta: #b5714a;
-      --clay:       #8c5535;
-      --charcoal:   #2e2a26;
-      --muted:      #7a6f65;
-      --gold:       #c8a96e;
-
-      --font-display: 'Cormorant Garamond', Georgia, serif;
-      --font-body:    'Jost', sans-serif;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-
     body {
       min-height: 100vh;
       background: var(--cream);
-      font-family: var(--font-body);
-      font-weight: 300;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -41,7 +22,6 @@
       overflow-x: hidden;
     }
 
-    /* subtle grain texture */
     body::before {
       content: '';
       position: fixed; inset: 0;
@@ -49,7 +29,6 @@
       pointer-events: none; z-index: 0;
     }
 
-    /* decorative background circle */
     body::after {
       content: '';
       position: fixed;
@@ -61,8 +40,8 @@
       pointer-events: none; z-index: 0;
     }
 
-    /* ── BACK LINK ── */
-    .back-link {
+    /* ── BACK LINK FLOTTANTE ── */
+    .back-link-floating {
       position: fixed; top: 28px; left: 32px;
       display: flex; align-items: center; gap: 8px;
       font-size: 11px; font-weight: 500;
@@ -71,10 +50,21 @@
       transition: color 0.2s;
       z-index: 10;
     }
-    .back-link:hover { color: var(--terracotta); }
-    .back-link svg { width: 14px; height: 14px; }
+    .back-link-floating:hover { color: var(--terracotta); }
+    .back-link-floating svg { width: 14px; height: 14px; }
 
-    /* ── CARD ── */
+    /* ── CARDS WRAPPER ── */
+    .cards-wrapper {
+      display: flex;
+      flex-direction: row;
+      gap: 32px;
+      justify-content: center;
+      align-items: flex-start;
+      width: 100%;
+      max-width: 1200px;
+      z-index: 1;
+    }
+
     .card {
       position: relative; z-index: 1;
       background: var(--warm-white);
@@ -82,28 +72,7 @@
       padding: 56px 48px 52px;
       box-shadow: 0 24px 80px rgba(46,42,38,0.10);
     }
-  /* Nuovo contenitore per le card */
-  .cards-wrapper {
-    display: flex;
-    flex-direction: row;
-    gap: 32px;
-    justify-content: center;
-    align-items: flex-start;
-    width: 100%;
-    max-width: 1200px;
-    z-index: 1;
-  }
 
-  /* Aggiorna la Media Query per il passaggio a mobile */
-  @media (max-width: 1100px) {
-    .cards-wrapper {
-      flex-direction: column;
-      align-items: center;
-    }
-    .card { max-width: 520px; }
-    .back-link, .logo { position: static; margin-bottom: 20px; }
-  }
-    /* ── HEADER ── */
     .card-header { text-align: center; margin-bottom: 48px; }
     .eyebrow {
       font-size: 10px; font-weight: 500;
@@ -117,18 +86,12 @@
       line-height: 1.15; color: var(--charcoal);
     }
     h1 em { font-style: italic; color: var(--terracotta); }
-    .divider {
-      width: 36px; height: 1px;
-      background: var(--gold);
-      margin: 20px auto 0;
-    }
     .subtitle {
       margin-top: 16px;
       font-size: 14px; color: var(--muted);
       line-height: 1.7;
     }
 
-    /* ── BUTTONS ── */
     .btn-list {
       display: flex; flex-direction: column; gap: 14px;
     }
@@ -147,7 +110,6 @@
     .btn:hover { transform: translateY(-1px); }
     .btn:active { transform: translateY(1px); }
 
-    /* icon zone */
     .btn-icon {
       width: 60px; flex-shrink: 0;
       display: flex; align-items: center; justify-content: center;
@@ -160,7 +122,6 @@
       stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
     }
 
-    /* text zone */
     .btn-text {
       flex: 1;
       padding: 18px 20px 18px 18px;
@@ -179,7 +140,6 @@
       opacity: 0.75;
     }
 
-    /* ── VIKEY button ── */
     .btn-vikey .btn-icon {
       background: var(--terracotta);
       color: #fff;
@@ -189,10 +149,7 @@
       color: #fff;
     }
     .btn-vikey:hover { box-shadow: 0 8px 28px rgba(181,113,74,0.35); }
-    .btn-vikey:active .btn-icon { background: var(--clay); }
-    .btn-vikey:active .btn-text { background: #1e1b18; }
 
-    /* ── WHATSAPP button ── */
     .btn-wa .btn-icon {
       background: #25D366;
       color: #fff;
@@ -204,13 +161,10 @@
       border-left: none;
     }
     .btn-wa:hover { box-shadow: 0 8px 28px rgba(37,211,102,0.22); }
-    .btn-wa:active .btn-icon { background: #1aad54; }
-    .btn-wa:active .btn-text { background: var(--sand); }
 
-    /* ── PHONE (static, no click animation) ── */
     .btn-phone {
       cursor: default;
-      pointer-events: none; /* disabilita click */
+      pointer-events: none;
       opacity: 1;
     }
     .btn-phone .btn-icon {
@@ -223,7 +177,6 @@
       border: 1px solid var(--sand);
       border-left: none;
     }
-    /* mostra il numero in evidenza */
     .phone-number {
       font-family: var(--font-display);
       font-size: 22px; font-weight: 300;
@@ -233,7 +186,6 @@
       letter-spacing: 0.04em;
     }
 
-    /* ── FOOTER NOTE ── */
     .card-note {
       margin-top: 36px;
       text-align: center;
@@ -248,72 +200,65 @@
     }
     .card-note a:hover { border-color: var(--terracotta); }
 
-    /* ── LOGO ── */
-    .logo {
-      position: fixed; top: 28px; right: 32px;
-      font-family: var(--font-display);
-      font-size: 18px; font-weight: 300;
-      color: var(--muted); z-index: 10;
-      text-decoration: none;
-    }
-    .logo span { font-style: italic; color: var(--terracotta); }
-
     /* ── ANIMATIONS ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
     }
     .card          { animation: fadeUp 0.6s ease both; }
-    .back-link     { animation: fadeUp 0.5s 0.1s ease both; }
+    .back-link-floating     { animation: fadeUp 0.5s 0.1s ease both; }
 
     /* ── RESPONSIVE ── */
+    @media (max-width: 1100px) {
+      .cards-wrapper {
+        flex-direction: column;
+        align-items: center;
+      }
+      .card { max-width: 520px; }
+      .back-link-floating { position: static; margin-bottom: 20px; }
+    }
     @media (max-width: 560px) {
       .card { padding: 40px 28px 36px; }
       h1 { font-size: 30px; }
-      .back-link, .logo { position: static; margin-bottom: 12px; }
-      .back-link { margin-bottom: 24px; }
     }
   </style>
 </head>
 <body>
 
-  <a href="bnb-bergamo.html" class="back-link">
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="foto/logocropped_transparent.png" alt="" class="nav-logo-img" onerror="this.style.display='none'" />
+      Suite <span>Anna</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#gallery">Gli spazi</a></li>
+      <li><a href="index.html#recensioni">Recensioni</a></li>
+      <li><a href="index.html#posizione">Posizione</a></li>
+      <li><a href="index.html#contatti">Contatti</a></li>
+    </ul>
+    <a href="prenota.html" class="nav-cta">Prenota</a>
+  </nav>
+
+  <a href="index.html" class="back-link-floating">
     <svg viewBox="0 0 24 24" stroke="currentColor" fill="none">
       <path d="M19 12H5M5 12l7-7M5 12l7 7"/>
     </svg>
     Torna al sito
   </a>
+
   <div class="cards-wrapper">
     <div class="card">
       <div class="card-header">
         <span class="eyebrow">Metodi di contatto</span>
         <h1>Come vuoi<br><em>prenotare?</em></h1>
-        <div class="divider"></div>
+        <div class="divider center"></div>
         <p class="subtitle">Qui puoi vedere la disponibilità<br>Ti consiglio di contattarmi direttamente per avere accesso ad eventuali scontistiche!</p>
       </div>
 
       <div class="btn-list">
 
-        <!-- VIKEY 
-        <a href="https://INSERIRE-LINK-VIKEY.com" target="_blank" rel="noopener" class="btn btn-vikey">
-          <div class="btn-icon">
-            
-            <svg viewBox="0 0 24 24">
-              <rect x="3" y="4" width="18" height="18" rx="2"/>
-              <path d="M16 2v4M8 2v4M3 10h18"/>
-              <path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/>
-            </svg>
-          </div>
-          <div class="btn-text">
-            <span class="btn-label">Prenota online</span>
-            <span class="btn-sub">Disponibilità in tempo reale · Vikey</span>
-          </div>
-        </a>-->
-
-        <!-- WHATSAPP -->
         <a href="https://wa.me/39NUMEROQUI?text=Ciao%2C%20vorrei%20informazioni%20per%20prenotare%20Casa%20Bergamo" target="_blank" rel="noopener" class="btn btn-wa">
           <div class="btn-icon">
-            <!-- WhatsApp icon -->
             <svg viewBox="0 0 24 24" stroke-width="1.5">
               <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
             </svg>
@@ -325,10 +270,8 @@
           </div>
         </a>
 
-        <!-- PHONE -->
         <div class="btn btn-phone">
           <div class="btn-icon">
-            <!-- phone icon -->
             <svg viewBox="0 0 24 24">
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.36 12 19.79 19.79 0 0 1 1.27 3.4 2 2 0 0 1 3.24 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 5.91 5.91l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
             </svg>
@@ -346,24 +289,17 @@
       </p>
     </div>
 
-
     <div class="card">
       <div class="card-header">
         <span class="eyebrow">Disponibilità</span>
       </div>
-
-    <!--
-      Incolla questo  nel punto del tuo sito in cui vuoi visualizzare il calendario di prenotazione.
-        - data-client-key: inserisci l'ID della struttura (local_key).  
-        - data-vikey-language: imposta la lingua del calendario (opzioni disponibili: it, es, en, fr, de, ru, zh, pt).  
-  -->
-    <div class="vikey-booking-engine-widget"
-      data-client-key="vgYVra4W32lmYLJe3_bSxI62J2sbVEw5x384GCmFqt4"
-      data-vikey-language="it">
-    </div>
-
-    <script async src="https://storage.googleapis.com/vikey-widgets/bookingengine/vikey-booking-engine-widget.js"></script>
+      <div class="vikey-booking-engine-widget"
+        data-client-key="vgYVra4W32lmYLJe3_bSxI62J2sbVEw5x384GCmFqt4"
+        data-vikey-language="it">
+      </div>
+      <script async src="https://storage.googleapis.com/vikey-widgets/bookingengine/vikey-booking-engine-widget.js"></script>
     </div>
   </div>
+
 </body>
 </html>

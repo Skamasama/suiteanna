@@ -7,77 +7,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 
   <style>
-    :root {
-      --cream:      #f8f4ef;
-      --warm-white: #fdfaf6;
-      --sand:       #e8ddd0;
-      --linen:      #d4c4b0;
-      --terracotta: #b5714a;
-      --clay:       #8c5535;
-      --charcoal:   #2e2a26;
-      --muted:      #7a6f65;
-      --gold:       #c8a96e;
-      --font-display: 'Cormorant Garamond', Georgia, serif;
-      --font-body:    'Jost', sans-serif;
-      --max-w: 1100px;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      background: var(--warm-white);
-      color: var(--charcoal);
-      font-family: var(--font-body);
-      font-weight: 300;
-      font-size: 16px;
-      line-height: 1.7;
-    }
-    a { color: inherit; text-decoration: none; }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 24px 40px;
-      background: rgba(253,250,246,0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(212,196,176,0.3);
-    }
-    .nav-logo {
-      display: flex; align-items: center; gap: 8px;
-      font-family: var(--font-display);
-      font-size: 22px; font-weight: 300; letter-spacing: 0.05em;
-      color: var(--charcoal);
-    }
-    .nav-logo span { color: var(--terracotta); font-style: italic; }
-    .nav-logo-img { height: 1em; width: auto; display: block; object-fit: contain; }
-    .nav-links { display: flex; gap: 36px; list-style: none; }
-    .nav-links a {
-      font-size: 12px; font-weight: 400; letter-spacing: 0.15em;
-      text-transform: uppercase; color: var(--muted); transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--terracotta); }
-    .nav-links a.active { color: var(--terracotta); }
-    .nav-cta {
-      font-size: 12px; font-weight: 500; letter-spacing: 0.12em;
-      text-transform: uppercase; padding: 10px 24px;
-      border: 1px solid var(--terracotta); color: var(--terracotta);
-      transition: background 0.25s, color 0.25s;
-    }
-    .nav-cta:hover { background: var(--terracotta); color: #fff; }
-
     /* ── HERO STRIP ── */
     .page-hero {
       padding: 120px 24px 32px;
       background: var(--cream);
       text-align: center;
-    }
-    .label {
-      font-size: 11px; font-weight: 500;
-      letter-spacing: 0.25em; text-transform: uppercase;
-      color: var(--terracotta); display: block; margin-bottom: 12px;
     }
     .page-title {
       font-family: var(--font-display);
@@ -86,10 +23,6 @@
       color: var(--charcoal);
     }
     .page-title em { font-style: italic; color: var(--terracotta); }
-    .divider {
-      width: 40px; height: 1px; background: var(--gold);
-      margin: 20px auto 24px;
-    }
     .page-sub {
       font-size: 15px; color: var(--muted);
       max-width: 500px; margin: 0 auto;
@@ -159,7 +92,7 @@
       display: block; margin-top: 2px; line-height: 1.4;
     }
 
-    /* ── BACK LINK ── */
+    /* ── BACK LINK (barra scura) ── */
     .back-bar {
       background: var(--charcoal);
       padding: 16px 40px;
@@ -174,24 +107,8 @@
     .back-bar a:hover { color: var(--gold); }
     .back-bar svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 
-    /* ── FOOTER ── */
-    footer {
-      background: #1e1b18; color: var(--muted);
-      padding: 40px;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 16px;
-    }
-    .footer-logo { font-family: var(--font-display); font-size: 18px; font-weight: 300; color: var(--linen); }
-    .footer-logo span { font-style: italic; color: var(--gold); }
-    .footer-copy { font-size: 12px; }
-    .footer-links { display: flex; gap: 24px; }
-    .footer-links a { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); transition: color 0.2s; }
-    .footer-links a:hover { color: var(--gold); }
-
     /* ── RESPONSIVE ── */
     @media (max-width: 860px) {
-      nav { padding: 20px 24px; }
-      .nav-links { display: none; }
       .services-grid { grid-template-columns: 1fr 1fr; }
       .back-bar { padding: 14px 24px; }
     }
@@ -202,25 +119,23 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
-    <a href="bnb-bergamo.html" class="nav-logo">
+    <a href="index.html" class="nav-logo">
       <img src="foto/logocropped_transparent.png" alt="" class="nav-logo-img" onerror="this.style.display='none'" />
       Suite <span>Anna</span>
     </a>
     <ul class="nav-links">
-      <li><a href="bnb-bergamo.html#gallery">Gli spazi</a></li>
-      <li><a href="bnb-bergamo.html#recensioni">Recensioni</a></li>
-      <li><a href="bnb-bergamo.html#posizione">Posizione</a></li>
-      <li><a href="bnb-bergamo.html#contatti">Contatti</a></li>
+      <li><a href="index.html#gallery">Gli spazi</a></li>
+      <li><a href="index.html#recensioni">Recensioni</a></li>
+      <li><a href="index.html#posizione">Posizione</a></li>
+      <li><a href="index.html#contatti">Contatti</a></li>
     </ul>
     <a href="prenota.html" class="nav-cta">Prenota</a>
   </nav>
 
-  <!-- PAGE HERO -->
   <div class="page-hero">
     <h1 class="page-title">Tutti i <em>servizi</em></h1>
-    <div class="divider"></div>
+    <div class="divider center"></div>
     <p class="page-sub">Tutto quello che troverete durante il vostro soggiorno a Suite Anna.</p>
   </div>
 
@@ -521,14 +436,20 @@
 
   </main>
 
-  <!-- FOOTER -->
+  <div class="back-bar">
+    <a href="index.html">
+      <svg viewBox="0 0 24 24" stroke="currentColor" fill="none"><path d="M19 12H5M5 12l7-7M5 12l7 7"/></svg>
+      Torna al sito
+    </a>
+  </div>
+
   <footer>
     <div class="footer-logo">Suite <span>Anna</span></div>
     <p class="footer-copy">© 2025 Suite Anna B&B — P.IVA 00000000000</p>
     <div class="footer-links">
-      <a href="bnb-bergamo.html">Home</a>
+      <a href="index.html">Home</a>
       <a href="prenota.html">Prenota</a>
-      <a href="bnb-bergamo.html#contatti">Contatti</a>
+      <a href="index.html#contatti">Contatti</a>
     </div>
   </footer>
 
