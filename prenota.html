@@ -256,7 +256,19 @@
       transition: border-color 0.2s;
     }
     .card-note a:hover { border-color: var(--terracotta); }
+    
+    .widget-wrapper {
+      display: flex;
+      justify-content: center;      /* centra il widget */
+      overflow-x: auto;             /* scroll orizzontale se necessario */
+      width: 100%;
+      padding: 0 4px;
+    }
 
+    .widget-wrapper .vikey-booking-engine-widget {
+      flex-shrink: 0;               /* non si restringe */
+      margin: 0 auto;
+    }
     /* ── ANIMATIONS ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
@@ -379,10 +391,13 @@
       <div class="card-header">
         <span class="eyebrow">Disponibilità</span>
       </div>
-      <div class="vikey-booking-engine-widget"
-        data-client-key="vgYVra4W32lmYLJe3_bSxI62J2sbVEw5x384GCmFqt4"
-        data-vikey-language="it">
+      <div class="widget-wrapper">
+        <div class="vikey-booking-engine-widget"
+          data-client-key="vgYVra4W32lmYLJe3_bSxI62J2sbVEw5x384GCmFqt4"
+          data-vikey-language="it">
+        </div>
       </div>
+      
       <script async src="https://storage.googleapis.com/vikey-widgets/bookingengine/vikey-booking-engine-widget.js"></script>
     </div>
   </div>
