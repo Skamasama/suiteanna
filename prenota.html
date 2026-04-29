@@ -1,23 +1,53 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Prenota — Casa Bergamo B&B</title>
+  <title>Suite Anna - Prenota</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  
+  
   <link rel="stylesheet" href="style.css" />
 
+
   <style>
+
+    /* Sovrascrive lo span di Great Vibes SOLO per questa pagina */
+    .nav-logo span {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-style: normal;
+      white-space: nowrap;         /* impedisce che vada a capo */
+    }
+
+    .nav-logo svg {
+      width: 36px;                 /* freccia più piccola (prima era 20-24px) */
+      height: 12px;                /* freccia più bassa/lunga */
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;           /* leggermente più spessa per compensare */
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;              /* non si restringe mai */
+    }
+
     body {
       min-height: 100vh;
       background: var(--cream);
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 40px 24px;
+      justify-content: flex-start;   /* prima era center */
+  padding: 120px 24px 40px;      /* prima era 40px 24px */
       position: relative;
       overflow-x: hidden;
     }
@@ -53,6 +83,8 @@
     .back-link-floating:hover { color: var(--terracotta); }
     .back-link-floating svg { width: 14px; height: 14px; }
 
+
+    
     /* ── CARDS WRAPPER ── */
     .cards-wrapper {
       display: flex;
@@ -226,10 +258,15 @@
 <body>
 
   <nav>
-    <a href="index.html" class="nav-logo">
-      <img src="foto/logocropped_transparent.png" alt="" class="nav-logo-img" onerror="this.style.display='none'" />
-      Suite <span>Anna</span>
-    </a>
+      <a href="index.html" class="nav-logo">
+        <img src="foto/logocropped_transparent.png" alt="" class="nav-logo-img" onerror="this.style.display='none'" />
+        
+        <svg viewBox="0 0 24 24" stroke="currentColor" fill="none">
+          <path d="M36 12H5M5 12l7-7M5 12l7 7"/>
+        </svg>
+        <span>Torna al sito</span>
+      </a>
+
     <ul class="nav-links">
       <li><a href="index.html#gallery">Gli spazi</a></li>
       <li><a href="index.html#recensioni">Recensioni</a></li>
@@ -238,14 +275,10 @@
     </ul>
     <a href="prenota.html" class="nav-cta">Prenota</a>
   </nav>
+  
 
-  <a href="index.html" class="back-link-floating">
-    <svg viewBox="0 0 24 24" stroke="currentColor" fill="none">
-      <path d="M19 12H5M5 12l7-7M5 12l7 7"/>
-    </svg>
-    Torna al sito
-  </a>
 
+  
   <div class="cards-wrapper">
     <div class="card">
       <div class="card-header">
@@ -300,6 +333,7 @@
       <script async src="https://storage.googleapis.com/vikey-widgets/bookingengine/vikey-booking-engine-widget.js"></script>
     </div>
   </div>
+
 
 </body>
 </html>

@@ -3,13 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Servizi — Suite Anna B&B</title>
+  <title>Suite Anna - Servizi</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+
+  
   <link rel="stylesheet" href="style.css" />
 
   <style>
+
+    .nav-logo span {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-style: normal;
+      white-space: nowrap;         /* impedisce che vada a capo */
+    }
+
+    .nav-logo svg {
+      width: 18px;                 /* freccia più piccola (prima era 20-24px) */
+      height: 10px;                /* freccia più bassa/lunga */
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;           /* leggermente più spessa per compensare */
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;              /* non si restringe mai */
+    }
     /* ── HERO STRIP ── */
     .page-hero {
       padding: 120px 24px 32px;
@@ -122,8 +147,13 @@
   <nav>
     <a href="index.html" class="nav-logo">
       <img src="foto/logocropped_transparent.png" alt="" class="nav-logo-img" onerror="this.style.display='none'" />
-      Suite <span>Anna</span>
+      
+      <svg viewBox="0 0 24 24" stroke="currentColor" fill="none">
+        <path d="M36 12H5M5 12l7-7M5 12l7 7"/>
+      </svg>
+      <span>Torna al sito</span>
     </a>
+
     <ul class="nav-links">
       <li><a href="index.html#gallery">Gli spazi</a></li>
       <li><a href="index.html#recensioni">Recensioni</a></li>
