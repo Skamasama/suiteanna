@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Casa Bergamo — B&B</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────────── */
+    :root {
+      --cream:      #f8f4ef;
+      --warm-white: #fdfaf6;
+      --sand:       #e8ddd0;
+      --linen:      #d4c4b0;
+      --terracotta: #b5714a;
+      --clay:       #8c5535;
+      --charcoal:   #2e2a26;
+      --muted:      #7a6f65;
+      --gold:       #c8a96e;
+
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'Jost', sans-serif;
+
+      --max-w: 1100px;
+      --section-pad: 96px 24px;
+    }
+
+    /* ─── RESET ──────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--warm-white);
+      color: var(--charcoal);
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── UTILITIES ──────────────────────────────────────────── */
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+    .label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+    }
+    .divider {
+      width: 40px; height: 1px;
+      background: var(--gold);
+      margin: 16px 0 32px;
+    }
+    .divider.center { margin: 16px auto 32px; }
+
+    /* ─── NAV ────────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 8px 20px;
+      background: rgba(253,250,246,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(212,196,176,0.3);
+      transition: padding 0.3s;
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      color: var(--charcoal);
+    }
+    .nav-logo span { 
+      color: var(--terracotta); 
+      font-family: "Great Vibes", cursive;
+      font-weight: 400;
+      font-style: normal;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-logo-img {
+      height: 2em;        /* si adatta esattamente all'altezza del font del nav-logo */
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+    .nav-links {
+      display: flex; gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--terracotta); }
+    .nav-cta {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 10px 24px;
+      border: 1px solid var(--terracotta);
+      color: var(--terracotta);
+      transition: background 0.25s, color 0.25s;
+    }
+    .nav-cta:hover { background: var(--terracotta); color: #fff; }
+
+    /* ─── HERO ───────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+      padding-top: 80px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-text {
+      display: flex; flex-direction: column;
+      justify-content: center;
+      padding: 80px 60px 80px 80px;
+      background: var(--cream);
+    }
+    .hero-eyebrow {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 24px;
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(42px, 5vw, 72px);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--charcoal);
+      margin-bottom: 16px;
+    }
+    .hero-title em { font-style: italic; color: var(--terracotta); }
+    .hero-sub {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 400px;
+      margin-bottom: 48px;
+      line-height: 1.8;
+    }
+    .hero-actions { display: flex; gap: 16px; align-items: center; }
+    .btn-primary {
+      display: inline-block;
+      padding: 14px 36px;
+      background: var(--terracotta);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: background 0.25s;
+    }
+    .btn-primary:hover { background: var(--clay); }
+    .btn-primary--wide {
+      padding: 16px 56px;
+      font-size: 13px;
+    }
+    .btn-ghost {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--linen);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-ghost:hover { color: var(--terracotta); border-color: var(--terracotta); }
+    .hero-image {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-image .img-placeholder {
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, var(--sand) 0%, var(--linen) 100%);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted); font-size: 13px; letter-spacing: 0.1em;
+    }
+    .hero-badge {
+      position: absolute; bottom: 32px; left: -20px;
+      background: var(--warm-white);
+      padding: 16px 24px;
+      box-shadow: 0 8px 40px rgba(46,42,38,0.12);
+    }
+    .hero-badge p { font-size: 11px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+    .hero-badge strong { font-family: var(--font-display); font-size: 28px; font-weight: 300; display: block; }
+
+    /* ─── AMENITIES STRIP ───────────────────────────────────── */
+    .amenities-strip {
+      background: var(--charcoal);
+      color: var(--sand);
+      padding: 0 40px;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .amenity-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 28px 36px;
+      text-align: center;
+      border-right: 1px solid rgba(212,196,176,0.12);
+      flex: 1;
+      min-width: 120px;
+    }
+    .amenity-item:first-child { border-left: 1px solid rgba(212,196,176,0.12); }
+    .amenity-icon {
+      width: 28px; height: 28px;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .amenity-icon svg {
+      width: 100%; height: 100%;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .amenity-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--linen);
+      line-height: 1.4;
+    }
+    .amenity-item.amenity-cta {
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .amenity-item.amenity-cta:hover {
+      background: rgba(212,196,176,0.07);
+    }
+    .amenity-item.amenity-cta .amenity-label {
+      color: var(--gold);
+      border-bottom: 1px solid rgba(200,169,110,0.4);
+      padding-bottom: 2px;
+    }
+
+    @media (max-width: 860px) {
+      .amenities-strip { padding: 0 16px; }
+      .amenity-item { padding: 22px 18px; min-width: 90px; }
+    }
+    @media (max-width: 580px) {
+      .amenity-item { flex: 1 1 45%; border-right: none; border-bottom: 1px solid rgba(212,196,176,0.12); }
+      .amenity-item:first-child { border-left: none; }
+    }
+    .intro-strip .stat { text-align: center; }
+    .intro-strip .stat-num {
+      font-family: var(--font-display);
+      font-size: 36px; font-weight: 300;
+      color: var(--gold);
+      display: block;
+    }
+    .intro-strip .stat-label {
+      font-size: 11px; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--linen);
+    }
+    .intro-strip .sep { width: 1px; height: 40px; background: rgba(212,196,176,0.25); }
+
+    /* ─── GALLERY / SPACES ───────────────────────────────────── */
+    #gallery { padding: var(--section-pad); background: var(--warm-white); }
+    .section-header { text-align: center; margin-bottom: 56px; }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 300;
+      line-height: 1.15;
+    }
+    .section-title em { font-style: italic; color: var(--terracotta); }
+
+    /* Spazi: griglia per blocchi */
+    .spaces-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+    }
+    .space-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+    .space-block.reverse { direction: rtl; }
+    .space-block.reverse > * { direction: ltr; }
+
+    /* foto grande */
+    .space-main-img {
+      height: 400px;
+      overflow: hidden;
+      position: relative;
+    }
+    .space-main-img .img-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted); font-size: 12px; letter-spacing: 0.1em;
+      transition: transform 0.5s ease;
+    }
+    .space-main-img:hover .img-placeholder { transform: scale(1.03); }
+
+    /* colonna destra: piccole + testo */
+    .space-side {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      height: 400px;
+    }
+    .space-thumbs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      flex: 1;
+    }
+    .space-thumb {
+      overflow: hidden;
+      position: relative;
+    }
+    .space-thumb .img-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted); font-size: 11px; letter-spacing: 0.08em;
+      transition: transform 0.5s ease;
+    }
+    .space-thumb:hover .img-placeholder { transform: scale(1.05); }
+
+    /* colori sfondo placeholder per varietà */
+    .c1 { background: #e8ddd0; }
+    .c2 { background: #e2d5c5; }
+    .c3 { background: #d8c9b5; }
+    .c4 { background: #ede4d8; }
+    .c5 { background: #e5d8c8; }
+    .c6 { background: #ddd0c0; }
+    .c7 { background: #f0e8de; }
+    .c8 { background: #d4c4b0; }
+
+    .space-info {
+      background: var(--cream);
+      padding: 20px 22px;
+      flex-shrink: 0;
+    }
+    .space-name {
+      font-family: var(--font-display);
+      font-size: 22px; font-weight: 300;
+      margin-bottom: 6px;
+    }
+    .space-name em { font-style: italic; color: var(--terracotta); }
+    .space-desc {
+      font-size: 13px; color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ─── REVIEWS ────────────────────────────────────────────── */
+    #recensioni { padding: var(--section-pad); background: var(--cream); }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 8px;
+    }
+
+    /* Google widget slot */
+    .review-widget-google {
+      grid-column: 1 / -1;
+      background: var(--warm-white);
+      border: 1px solid var(--sand);
+      min-height: 160px;
+      display: flex; align-items: center; justify-content: center;
+      padding: 32px;
+      margin-bottom: 8px;
+    }
+    .review-widget-note {
+      font-size: 12px; color: var(--muted);
+      text-align: center; letter-spacing: 0.05em;
+    }
+    .review-widget-note strong { display: block; font-weight: 500; color: var(--charcoal); margin-bottom: 6px; font-size: 13px; }
+    .review-widget-note code {
+      background: var(--sand); padding: 2px 8px;
+      font-size: 11px; color: var(--clay);
+    }
+
+    /* Card recensioni statiche */
+    .review-card {
+      background: var(--warm-white);
+      padding: 28px 28px 24px;
+      display: flex; flex-direction: column; gap: 16px;
+      border-bottom: 3px solid var(--sand);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .review-card:hover {
+      border-color: var(--terracotta);
+      box-shadow: 0 8px 32px rgba(46,42,38,0.07);
+    }
+    .review-platform {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .platform-logo {
+      width: 28px; height: 28px; border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700; color: #fff;
+      flex-shrink: 0;
+    }
+    .platform-logo.airbnb { background: #FF5A5F; }
+    .platform-logo.booking { background: #003580; }
+    .platform-name {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .review-stars {
+      display: flex; gap: 3px;
+      color: var(--gold);
+      font-size: 14px;
+    }
+    .review-text {
+      font-family: var(--font-display);
+      font-size: 17px; font-weight: 300;
+      font-style: italic;
+      line-height: 1.6;
+      color: var(--charcoal);
+      flex: 1;
+    }
+    /* PARAMETRIZZATO: sostituire i placeholder con le tue recensioni */
+    .review-text::before { content: '"'; }
+    .review-text::after  { content: '"'; }
+    .review-author {
+      font-size: 12px; color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+    .review-author strong { color: var(--charcoal); font-weight: 500; }
+
+    /* ─── MAP / LOCATION ─────────────────────────────────────── */
+    #posizione { padding: var(--section-pad); background: var(--warm-white); }
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .location-info .section-title { text-align: left; }
+    .location-info .divider { margin-left: 0; }
+    .location-desc { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 40px; }
+    .poi-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .poi-list li {
+      display: flex; align-items: center; gap: 14px;
+      font-size: 14px; color: var(--charcoal);
+    }
+    .poi-list li::before {
+      content: '';
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0;
+    }
+    .poi-list li span { color: var(--muted); font-size: 12px; margin-left: auto; }
+    .map-container {
+      height: 420px;
+      background: var(--sand);
+      position: relative;
+      overflow: hidden;
+    }
+    .map-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; letter-spacing: 0.1em; color: var(--muted);
+      background: linear-gradient(135deg, #e8ddd0 0%, #d4c4b0 100%);
+    }
+    .map-pin {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -100%);
+      width: 32px; height: 32px;
+      background: var(--terracotta); border-radius: 50% 50% 50% 0;
+      rotate: -45deg;
+      box-shadow: 0 4px 12px rgba(181,113,74,0.4);
+    }
+    .map-pin::after {
+      content: ''; position: absolute;
+      width: 12px; height: 12px;
+      background: #fff; border-radius: 50%;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+    }
+
+    /* ─── CONTACT ────────────────────────────────────────────── */
+    #contatti {
+      padding: var(--section-pad);
+      background: var(--charcoal);
+      color: var(--sand);
+    }
+    #contatti .section-title { color: var(--warm-white); }
+    #contatti .label { color: var(--gold); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    /* Colonna sinistra: testo + bottoni contatto */
+    .contact-info p {
+      font-size: 15px; color: var(--linen);
+      line-height: 1.8; margin-bottom: 40px;
+    }
+    .contact-channels {
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .contact-btn {
+      display: flex; align-items: center; gap: 0;
+      text-decoration: none;
+      overflow: hidden;
+      transition: transform 0.15s, box-shadow 0.2s;
+    }
+    .contact-btn:hover { transform: translateY(-2px); }
+    .contact-btn:active { transform: translateY(1px); }
+    .contact-btn-icon {
+      width: 56px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      align-self: stretch;
+    }
+    .contact-btn-icon svg {
+      width: 20px; height: 20px;
+      fill: none; stroke: currentColor;
+      stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
+    }
+    .contact-btn-body {
+      flex: 1;
+      padding: 16px 20px;
+    }
+    .contact-btn-label {
+      display: block;
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      opacity: 0.75;
+    }
+    .contact-btn-value {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 20px; font-weight: 300;
+      margin-top: 2px;
+    }
+
+    /* WhatsApp */
+    .contact-btn-wa .contact-btn-icon { background: #25D366; color: #fff; }
+    .contact-btn-wa .contact-btn-body { background: rgba(37,211,102,0.08); color: var(--warm-white); border: 1px solid rgba(37,211,102,0.2); border-left: none; }
+    .contact-btn-wa:hover { box-shadow: 0 8px 28px rgba(37,211,102,0.2); }
+
+    /* Telefono */
+    .contact-btn-tel .contact-btn-icon { background: var(--terracotta); color: #fff; }
+    .contact-btn-tel .contact-btn-body { background: rgba(181,113,74,0.1); color: var(--warm-white); border: 1px solid rgba(181,113,74,0.25); border-left: none; }
+    .contact-btn-tel:hover { box-shadow: 0 8px 28px rgba(181,113,74,0.2); }
+
+    /* Email */
+    .contact-btn-email .contact-btn-icon { background: rgba(200,169,110,0.2); color: var(--gold); }
+    .contact-btn-email .contact-btn-body { background: rgba(255,255,255,0.04); color: var(--warm-white); border: 1px solid rgba(200,169,110,0.2); border-left: none; }
+    .contact-btn-email:hover { box-shadow: 0 8px 28px rgba(200,169,110,0.12); }
+
+    .contact-footer-note {
+      margin-top: 28px;
+      font-size: 12px; color: var(--muted);
+      letter-spacing: 0.05em; line-height: 1.7;
+    }
+
+    /* ─── CHI SIAMO ──────────────────────────────────────────── */
+    .chisiamo-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(212,196,176,0.12);
+      padding: 40px;
+    }
+    .chisiamo-card .label { display: block; margin-bottom: 16px; }
+    .chisiamo-photo {
+      width: 100%; aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #3a342e 0%, #2a2420 100%);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted); font-size: 12px; letter-spacing: 0.1em;
+      margin-bottom: 28px;
+      overflow: hidden;
+    }
+    .chisiamo-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .chisiamo-names {
+      font-family: var(--font-display);
+      font-size: 26px; font-weight: 300;
+      color: var(--warm-white);
+      margin-bottom: 6px;
+    }
+    .chisiamo-names em { font-style: italic; color: var(--gold); }
+    .chisiamo-text {
+      font-size: 14px; color: var(--linen);
+      line-height: 1.85;
+    }
+
+    /* Responsive */
+    /* ─── FOOTER ─────────────────────────────────────────────── */
+    footer {
+      background: #1e1b18;
+      color: var(--muted);
+      padding: 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 18px; font-weight: 300;
+      color: var(--linen);
+    }
+    .footer-logo span { font-style: italic; color: var(--gold); }
+    .footer-copy { font-size: 12px; letter-spacing: 0.05em; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a {
+      font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--muted); transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+
+    /* ─── ANIMATIONS ─────────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-eyebrow { animation: fadeUp 0.7s ease both; }
+    .hero-title   { animation: fadeUp 0.7s 0.15s ease both; }
+    .hero-sub     { animation: fadeUp 0.7s 0.28s ease both; }
+    .hero-actions { animation: fadeUp 0.7s 0.4s  ease both; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 860px) {
+      #hero { grid-template-columns: 1fr; height: auto; }
+      .hero-image { height: 340px; }
+      .hero-text { padding: 60px 32px; }
+      .hero-badge { display: none; }
+      .space-block,
+      .space-block.reverse { grid-template-columns: 1fr; direction: ltr; }
+      .space-main-img { height: 280px; }
+      .space-side { height: auto; }
+      .space-thumbs { grid-template-columns: 1fr 1fr; height: 160px; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .location-grid,
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      nav { padding: 20px 24px; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 580px) {
+      .form-row { grid-template-columns: 1fr; }
+      .intro-strip { gap: 32px; }
+      .intro-strip .sep { display: none; }
+      .space-thumbs { grid-template-columns: 1fr 1fr; height: 120px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ──────────────────────────────────────────────────── -->
+  <!--<nav>
+    <div class="nav-logo">Suite <span>Anna</span></div>
+    <ul class="nav-links">
+      <li><a href="#gallery">Gli spazi</a></li>
+      <li><a href="#recensioni">Recensioni</a></li>
+      <li><a href="#posizione">Posizione</a></li>
+      <li><a href="#contatti">Contatti</a></li>
+    </ul>
+    <a href="prenota.html" class="nav-cta">Prenota</a>
+  </nav>-->
+  <nav>
+  <a href="bnb-bergamo.html" class="nav-logo">
+    <img src="foto/logocropped_transparent.png" alt="" class="nav-logo-img"
+        onerror="this.style.display='none'" />
+    Suite <span>Anna</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#gallery">Gli spazi</a></li>
+    <li><a href="#recensioni">Recensioni</a></li>
+    <li><a href="#posizione">Posizione</a></li>
+    <li><a href="#contatti">Contatti</a></li>
+  </ul>
+  <a href="prenota.html" class="nav-cta">Prenota</a>
+</nav>
+  <!-- ── HERO ─────────────────────────────────────────────────── -->
+  <section id="hero">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Suite ai piedi di città alta</p>
+      <h1 class="hero-title">
+        Il tuo <em>rifugio</em>,<br> nel cuore<br>di <em>Bergamo</em>
+      </h1>
+      <p class="hero-sub">
+        Dove il calore di casa si incontra con l'eleganza discreta.
+        Svegliarsi a Bergamo, ogni mattina, pronti per una nuova avventura.
+      </p>
+      <div class="hero-actions">
+        <a href="prenota.html" class="btn-primary btn-primary--wide">Prenota ora</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="img-placeholder"><img src="foto/FotoPrincipale.jpg"></div>
+      <!--<div class="hero-badge">
+        <p>A partire da</p>
+        <strong>€ 90 <small style="font-size:14px;font-family:var(--font-body);color:var(--muted)">/notte</small></strong>
+      </div>-->
+    </div>
+  </section>
+
+  <!-- ── Amenities-strip ─────────────────────────────────────────────────── -->
+  <div class="amenities-strip">
+
+    <!-- Self check-in -->
+    <div class="amenity-item">
+      <div class="amenity-icon">
+        <svg viewBox="0 0 24 24">
+          <rect x="3" y="11" width="18" height="11" rx="2"/>
+          <path d="M7 11V7a5 5 0 0 1 9.9-1"/>
+          <circle cx="12" cy="16" r="1" fill="currentColor" stroke="none"/>
+          <path d="M12 17v2"/>
+        </svg>
+      </div>
+      <span class="amenity-label">Self<br>Check-in</span>
+    </div>
+
+    <!-- AC / Climatizzatore -->
+    <div class="amenity-item">
+      <div class="amenity-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2v20M2 12h20"/>
+          <path d="M5 5l14 14M19 5 5 19"/>
+          <path d="M12 6l-2-2M12 6l2-2M12 18l-2 2M12 18l2 2M6 12l-2-2M6 12l-2 2M18 12l2-2M18 12l2 2"/>
+        </svg>
+      </div>
+      <span class="amenity-label">Aria<br>Condizionata</span>
+    </div>
+
+    <!-- Navetta -->
+    <div class="amenity-item">
+      <div class="amenity-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M3 11l1-4h16l1 4"/>
+          <rect x="2" y="11" width="20" height="7" rx="1"/>
+          <circle cx="7" cy="18" r="2"/>
+          <circle cx="17" cy="18" r="2"/>
+          <path d="M2 15h20"/>
+          <path d="M9 7V5M15 7V5"/>
+        </svg>
+      </div>
+      <span class="amenity-label">Servizio<br>Navetta</span>
+    </div>
+
+    <!-- Deposito bagagli -->
+    <div class="amenity-item">
+      <div class="amenity-icon">
+        <svg viewBox="0 0 24 24">
+          <rect x="5" y="8" width="14" height="13" rx="2"/>
+          <path d="M9 8V6a3 3 0 0 1 6 0v2"/>
+          <path d="M5 13h14"/>
+          <path d="M12 13v4"/>
+        </svg>
+      </div>
+      <span class="amenity-label">Deposito<br>Bagagli</span>
+    </div>
+
+    <!-- CTA: vedi tutti -->
+    <a href="servizi.html" class="amenity-item amenity-cta">
+      <div class="amenity-icon">
+        <svg viewBox="0 0 24 24">
+          <circle cx="5" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+          <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+          <circle cx="19" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+        </svg>
+      </div>
+      <span class="amenity-label">Vedi tutti<br>i servizi</span>
+    </a>
+
+  </div>
+
+  <!-- ── GALLERY / SPAZI ──────────────────────────────────────── -->
+  <section id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <p class="label">Gli spazi</p>
+        <div class="divider center"></div>
+        <h2 class="section-title">Un appartamento <em>intero</em>,<br>tutto per voi</h2>
+      </div>
+
+      <div class="spaces-grid">
+
+        <!-- CAMERA 1 -->
+        <div class="space-block">
+          <div class="space-main-img">
+            <div class="img-placeholder c1"><img src="foto/camera1_1.jpg"></div>
+          </div>
+          <div class="space-side">
+            <div class="space-thumbs">
+              <div class="space-thumb"><div class="img-placeholder c2"><img src="foto/camera1_dettaglio.jpg"></div></div>
+              <div class="space-thumb"><div class="img-placeholder c3"><img src="foto/camera1_2.jpg"></div></div>
+            </div>
+            <div class="space-info">
+              <h3 class="space-name">Camera <em>Bianca</em></h3>
+              <p class="space-desc"><!-- MODIFICA: descrizione camera 1 --><br>Letto matrimoniale · Divano · Vista sull'esterno · AC</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CAMERA 2 -->
+        <div class="space-block reverse">
+          <div class="space-main-img">
+            <div class="img-placeholder c4"><img src="foto/camera2_1.jpg"></div>
+          </div>
+          <div class="space-side">
+            <div class="space-thumbs">
+              <div class="space-thumb"><div class="img-placeholder c5"><img src="foto/camera2_2.jpg"></div></div>
+              <div class="space-thumb"><div class="img-placeholder c6"><img src="foto/camera2_dettaglio.jpg"></div></div>
+            </div>
+            <div class="space-info">
+              <h3 class="space-name">Camera <em>Amelia</em></h3>
+              <p class="space-desc"><!-- MODIFICA: descrizione camera 2 --><br>Letto matrimoniale · Armadio · AC</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- SOGGIORNO -->
+        <div class="space-block">
+          <div class="space-main-img">
+            <div class="img-placeholder c7"><img src="foto/soggiorno.jpg"></div>
+          </div>
+          <div class="space-side">
+            <div class="space-thumbs">
+              <div class="space-thumb"><div class="img-placeholder c2"><img src="foto/cucina.jpg"></div></div>
+              <div class="space-thumb"><div class="img-placeholder c8"><img src="foto/divanoletto.jpg"></div></div>
+            </div>
+            <div class="space-info">
+              <h3 class="space-name">Soggiorno <em>&</em>  Cucina</h3>
+              <p class="space-desc"><!-- MODIFICA: descrizione soggiorno --><br>Cucina attrezzata · TV · Zona relax</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- BAGNO -->
+        <div class="space-block reverse">
+          <div class="space-main-img">
+            <div class="img-placeholder c3"><img src="foto/bagno1.jpg"></div>
+          </div>
+          <div class="space-side">
+            <div class="space-thumbs">
+              <div class="space-thumb"><div class="img-placeholder c6"><img src="foto/bagno2.jpg"></div></div>
+              <div class="space-thumb"><div class="img-placeholder c1"><img src="foto/bagno3.jpg"></div></div>
+            </div>
+            <div class="space-info">
+              <h3 class="space-name"><em>Bagno</em></h3>
+              <p class="space-desc"><!-- MODIFICA: descrizione bagno --><br>Doccia · Asciugacapelli · Prodotti inclusi</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── RECENSIONI ────────────────────────────────────────────── -->
+  <section id="recensioni">
+    <div class="container">
+      <div class="section-header">
+        <p class="label">Recensioni</p>
+        <div class="divider center"></div>
+        <h2 class="section-title">Cosa dicono i nostri <em>ospiti</em> su di noi</h2>
+      </div>
+
+      <div class="reviews-grid">
+
+        <!-- GOOGLE REVIEWS WIDGET — inserire codice Elfsight -->
+        <div class="review-card">
+          
+            <!-- Elfsight Google Reviews | Untitled Google Reviews -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-7995dcfa-a25b-48fc-97ba-7ad3c5eeec72" data-elfsight-app-lazy></div>
+            
+          
+        </div>
+
+        <!-- AIRBNB — card statica parametrizzata -->
+        <div class="review-card">
+          <script src="https://elfsightcdn.com/platform.js" async></script>
+          <div class="elfsight-app-c1c78ac5-7df4-49bc-bdb7-68ee0faa6e7e" data-elfsight-app-lazy></div>
+          <!--<div class="review-platform">
+            <!-- Elfsight Airbnb Reviews | Untitled Airbnb Reviews 
+            <script src="https://elfsightcdn.com/platform.js" async></script>
+            <div class="elfsight-app-c1c78ac5-7df4-49bc-bdb7-68ee0faa6e7e" data-elfsight-app-lazy></div>
+            <!--<div class="platform-logo airbnb">A</div>
+            <span class="platform-name">Airbnb</span>
+          </div>
+          <div class="review-stars">★★★★★</div>
+           MODIFICA: incolla qui il testo della recensione Airbnb
+          <p class="review-text">Testo recensione Airbnb da inserire — copia dalla tua pagina host e incolla qui.</p>
+          MODIFICA: nome ospite e data
+          <p class="review-author"><strong>Nome Ospite</strong> · Mese Anno</p>-->
+        </div>
+
+        <!-- BOOKING.COM — card statica parametrizzata -->
+        
+          <div class="review-card">
+            <!-- Elfsight Booking.com Reviews | Untitled Booking.com Reviews -->
+            <script src="https://elfsightcdn.com/platform.js" async></script>
+            <div class="elfsight-app-10cf2cd5-95df-4ef3-b624-f986891ee2ec" data-elfsight-app-lazy></div>
+            <!--<div class="platform-logo booking">B</div>
+            <span class="platform-name">Booking.com</span>
+          </div>
+          <div class="review-stars">★★★★★</div>
+           MODIFICA: incolla qui il testo della recensione Booking 
+          <p class="review-text">Testo recensione Booking.com da inserire — copia dalla tua extranet e incolla qui.</p>
+           MODIFICA: nome ospite e data 
+          <p class="review-author"><strong>Nome Ospite</strong> · Mese Anno</p>-->
+        </div>
+
+      
+    </div>
+  </section>
+
+  <!-- ── LOCATION ──────────────────────────────────────────────── -->
+  <section id="posizione">
+    <div class="container">
+      <div class="location-grid">
+        <div class="location-info">
+          <p class="label">Dove siamo</p>
+          <div class="divider"></div>
+          <h2 class="section-title">Nel cuore di <em>Bergamo</em>,<br>a due passi da tutto</h2>
+          <p class="location-desc">
+            Situati nel centro della città, a pochi minuti a piedi dalla funicolare per Città Alta
+            e dalle principali attrazioni. Raggiungibili facilmente dall'aeroporto di Orio al Serio.
+          </p>
+          <ul class="poi-list">
+            <li>Funicolare Città Alta <span>5 min a piedi</span></li>
+            <li>Stazione Centrale <span>10 min a piedi</span></li>
+            <li>Aeroporto Orio al Serio <span>15 min in taxi</span></li>
+            <li>Pinacoteca Accademia Carrara <span>5 min a piedi</span></li>
+            <li>Gewiss Stadium <span>15 min a piedi</span></li>
+          </ul>
+        </div>
+        <div class="map-container">
+          <!-- Sostituire con un iframe Google Maps reale -->
+          <div class="map-placeholder">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1393.3046446536212!2d9.667263107635186!3d45.69881236478315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478151c758ec23f7%3A0x2ff74e672861fbc8!2sSuite%20vicino%20a%20Citt%C3%A0%20Alta!5e0!3m2!1sit!2sit!4v1775039126343!5m2!1sit!2sit" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT / BOOKING ─────────────────────────────────────── -->
+  <section id="contatti">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Colonna sinistra: contatti -->
+        <div class="contact-info">
+          <p class="label">Contatti</p>
+          <div class="divider"></div>
+          <h2 class="section-title" style="color:var(--warm-white)">
+            Scrivici <br> per qualsiasi informazione
+          </h2>
+          <p>Per richieste di disponibilità, informazioni sulle camere, qualsiasi curiosità o necessità — senza impegno.</p>
+
+          <div class="contact-channels">
+
+            <!-- WhatsApp -->
+            <a href="https://wa.me/39NUMEROQUI?text=Ciao%2C%20vorrei%20informazioni%20per%20prenotare%20Casa%20Bergamo"
+               target="_blank" rel="noopener" class="contact-btn contact-btn-wa">
+              <div class="contact-btn-icon">
+                <svg viewBox="0 0 24 24" stroke-width="1.5">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                </svg>
+              </div>
+              <div class="contact-btn-body">
+                <span class="contact-btn-label">WhatsApp</span>
+                <span class="contact-btn-value">+39 320 70 80 990</span>
+              </div>
+            </a>
+
+            <!-- Telefono -->
+            <a href="tel:+39 320 70 80 990" class="contact-btn contact-btn-tel">
+              <div class="contact-btn-icon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.36 12 19.79 19.79 0 0 1 1.27 3.4 2 2 0 0 1 3.24 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 5.91 5.91l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </div>
+              <div class="contact-btn-body">
+                <span class="contact-btn-label">Telefono</span>
+                <span class="contact-btn-value">+39 320 70 80 990</span>
+              </div>
+            </a>
+
+            <!-- Email -->
+            <a href="mailto:info@casabergamo.it" class="contact-btn contact-btn-email">
+              <div class="contact-btn-icon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                  <polyline points="22,6 12,13 2,6"/>
+                </svg>
+              </div>
+              <div class="contact-btn-body">
+                <span class="contact-btn-label">Email</span>
+                <span class="contact-btn-value">crawford.matteo06@gmail.com</span>
+              </div>
+            </a>
+
+          </div>
+
+          <p class="contact-footer-note">Check-in dalle 15:00 · Check-out entro le 10.30<br>Via Masone 10, Bergamo</p>
+        </div>
+
+        <!-- Colonna destra: chi siamo -->
+        <div class="chisiamo-card">
+          <span class="label">Chi siamo</span>
+          <div class="chisiamo-photo">
+            [ Foto dei proprietari — inserire immagine ]
+          </div>
+          <h3 class="chisiamo-names">Nome e <em>Nome</em></h3>
+          <!-- MODIFICA: scrivi qui il vostro paragrafo di presentazione -->
+          <p class="chisiamo-text">Siamo i vostri host e saremo felici di accogliervi come ospiti speciali. Raccontate qui la vostra storia, cosa vi ha portato ad aprire il B&B, cosa amate di Bergamo e cosa volete trasmettere ai vostri ospiti.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ────────────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-logo">Suite <span>Anna</span></div>
+    <p class="footer-copy">2025 Suite Anna — CIR 016024CNI00985 — CIN IT016024C24OCYKA5F
+</p>
+    <div class="footer-links">
+      <a href="#">Torna su
+    
