@@ -46,7 +46,7 @@ a { color: inherit; text-decoration: none; }
   background: var(--gold);
   margin: 16px 0 32px;
 }
-.divider.center { margin: 16px auto 32px; }
+.divider.center { margin: 16px auto;}
 
 /* ─── NAV ────────────────────────────────────────────────── */
 nav {

@@ -42,14 +42,16 @@
 
     body {
       min-height: 100vh;
+      height: 100vh;                /* altezza fissa = viewport */
       background: var(--cream);
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;   /* prima era center */
-  padding: 120px 24px 40px;      /* prima era 40px 24px */
+      justify-content: center;
+      padding: 90px 20px 10px;      /* ridotto per massimizzare spazio */
       position: relative;
-      overflow-x: hidden;
+      overflow: hidden;             /* mai scroll della pagina */
+      box-sizing: border-box;
     }
 
     body::before {
@@ -89,23 +91,34 @@
     .cards-wrapper {
       display: flex;
       flex-direction: row;
+      flex-wrap: nowrap;            /* mai a capo */
       gap: 32px;
       justify-content: center;
       align-items: flex-start;
       width: 100%;
       max-width: 1200px;
+      height: 100%;                 /* occupa tutto lo spazio disponibile */
       z-index: 1;
+      padding: 0 20px;
+      box-sizing: border-box;
     }
 
     .card {
-      position: relative; z-index: 1;
+      position: relative;
+      z-index: 1;
       background: var(--warm-white);
-      width: 100%; max-width: 520px;
-      padding: 56px 48px 52px;
+      width: 100%;
+      max-width: 520px;
+      min-width: 300px;             /* non più piccolo di così */
+      flex: 1 1 auto;               /* si restringe e si allarga */
+      padding: 24px 32px 24px;      /* ridotto un po' */
       box-shadow: 0 24px 80px rgba(46,42,38,0.10);
+      overflow-y: auto;             /* scroll interno se necessario */
+      max-height: 100%;             /* non supera l'altezza disponibile */
+      box-sizing: border-box;
     }
 
-    .card-header { text-align: center; margin-bottom: 48px; }
+    .card-header { text-align: center; margin-bottom: 32px; }
     .eyebrow {
       font-size: 10px; font-weight: 500;
       letter-spacing: 0.25em; text-transform: uppercase;
@@ -114,7 +127,7 @@
     }
     h1 {
       font-family: var(--font-display);
-      font-size: 38px; font-weight: 300;
+      font-size: 26px; font-weight: 300;
       line-height: 1.15; color: var(--charcoal);
     }
     h1 em { font-style: italic; color: var(--terracotta); }
@@ -156,7 +169,7 @@
 
     .btn-text {
       flex: 1;
-      padding: 18px 20px 18px 18px;
+      padding: 14px 20px 14px 18px;   /* era 18px 20px 18px 18px */
       text-align: left;
       transition: background 0.18s;
     }
@@ -190,6 +203,7 @@
       background: var(--cream);
       color: var(--charcoal);
       border: 1px solid var(--sand);
+    
       border-left: none;
     }
     .btn-wa:hover { box-shadow: 0 8px 28px rgba(37,211,102,0.22); }
@@ -218,6 +232,17 @@
       letter-spacing: 0.04em;
     }
 
+    .btn-email .btn-icon {
+      background: var(--muted);
+      color: #fff;
+    }
+    .btn-email .btn-text {
+      background: var(--warm-white);
+      color: var(--charcoal);
+      border: 1px solid var(--sand);
+      border-left: none;
+    }
+    .btn-email:hover { box-shadow: 0 8px 28px rgba(122,111,101,0.2); }
     .card-note {
       margin-top: 36px;
       text-align: center;
@@ -241,14 +266,32 @@
     .back-link-floating     { animation: fadeUp 0.5s 0.1s ease both; }
 
     /* ── RESPONSIVE ── */
+    /* ── RESPONSIVE ── */
     @media (max-width: 1100px) {
+      body {
+        height: auto;
+        min-height: 100vh;
+        overflow-y: auto;
+        padding: 100px 24px 40px;
+      }
+      
       .cards-wrapper {
         flex-direction: column;
         align-items: center;
+        height: auto;
+        padding: 0;
       }
-      .card { max-width: 520px; }
-      .back-link-floating { position: static; margin-bottom: 20px; }
+      
+      .card {
+        flex: none;
+        width: 100%;
+        max-width: 520px;
+        min-width: auto;
+        max-height: none;
+        overflow-y: visible;
+      }
     }
+
     @media (max-width: 560px) {
       .card { padding: 40px 28px 36px; }
       h1 { font-size: 30px; }
@@ -283,9 +326,8 @@
     <div class="card">
       <div class="card-header">
         <span class="eyebrow">Metodi di contatto</span>
-        <h1>Come vuoi<br><em>prenotare?</em></h1>
+        <h1>Contattaci per richiedere informazioni o per uno sconto speciale</h1>
         <div class="divider center"></div>
-        <p class="subtitle">Qui puoi vedere la disponibilità<br>Ti consiglio di contattarmi direttamente per avere accesso ad eventuali scontistiche!</p>
       </div>
 
       <div class="btn-list">
@@ -298,7 +340,7 @@
           </div>
           <div class="btn-text">
             <span class="btn-label">Scrivimi su WhatsApp</span>
-            <span class="btn-sub">Risposta rapida · Possibilità di sconti</span>
+            <!--<span class="btn-sub">Risposta rapida · Possibilità di sconti</span>--*/ -->
             <span class="phone-number">+39 320 708 0990</span>
           </div>
         </a>
@@ -314,12 +356,23 @@
             <span class="phone-number">+39 320 708 0990</span>
           </div>
         </div>
-
+        <a href="mailto:crawford.matteo06@gmail.com" class="btn btn-email">
+          <div class="btn-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div class="btn-text">
+            <span class="btn-label">Scrivimi una mail</span>
+            <span class="phone-number">crawford.matteo06@gmail.com</span>
+          </div>
+        </a>
       </div>
 
-      <p class="card-note">
+      <!--<p class="card-note">
         <a href="mailto:crawford.matteo06@gmail.com">crawford.matteo06@gmail.com</a> · Check-in dalle 15:00, check-out entro le 10:30
-      </p>
+      </p>-->
     </div>
 
     <div class="card">
