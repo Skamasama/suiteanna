@@ -1,22 +1,25 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <script type="text/javascript" src="https://embeds.iubenda.com/widgets/f86d6d5c-fe1d-4258-aaf5-5efe4233316e.js"></script>
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Suite Anna - Prenota</title>
-  <meta name="description" content="Prenota direttamente il tuo soggiorno a Suite Anna, appartamento turistico a Bergamo. Scopri la disponibilità delle date e ottieni la tariffa migliore." />
-  <link rel="canonical" href="https://www.suiteanna.it/prenota.html" />
-  <link rel="icon" type="image/png" href="foto/grafiche/logocropped_transparent.png" />
+  <title>Suite Anna - Book Your Stay</title>
+  <meta name="description" content="Book your stay directly at Suite Anna, a cozy holiday apartment in Bergamo. Check date availability and secure the best direct-booking rate." />
+  <link rel="canonical" href="https://www.suiteanna.it/en/prenota.html" />
+  <link rel="alternate" hreflang="it" href="https://www.suiteanna.it/it/prenota.html" />
+  <link rel="alternate" hreflang="en" href="https://www.suiteanna.it/en/prenota.html" />
+
+  <link rel="icon" type="image/png" href="../foto/grafiche/logocropped_transparent.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  
-  
-  <link rel="stylesheet" href="style.css" />
+
+
+  <link rel="stylesheet" href="../style.css" />
 
 
   <style>
@@ -44,7 +47,7 @@
       flex-shrink: 0;              /* non si restringe mai */
     }
 
-  
+
     body {
       min-height: 100vh;
       background: var(--cream);
@@ -109,7 +112,7 @@
     .back-link-floating svg { width: 14px; height: 14px; }
 
 
-    
+
     /* ── CARDS WRAPPER ── */
     .cards-wrapper {
       display: flex;
@@ -226,7 +229,7 @@
       background: var(--cream);
       color: var(--charcoal);
       border: 1px solid var(--sand);
-    
+
       border-left: none;
     }
     .btn-wa:hover { box-shadow: 0 8px 28px rgba(37,211,102,0.22); }
@@ -279,7 +282,7 @@
       transition: border-color 0.2s;
     }
     .card-note a:hover { border-color: var(--terracotta); }
-    
+
     .widget-wrapper {
       display: flex;
       justify-content: center;      /* centra il widget */
@@ -308,19 +311,19 @@
         overflow-y: auto;
         padding: 0;
       }
-      
+
       .viewport-content {
         min-height: auto;
         padding: 100px 24px 40px;
       }
-      
+
       .cards-wrapper {
         flex-direction: column;
         align-items: center;
         height: auto;
         padding: 0;
       }
-      
+
       .card {
         flex: none;
         width: 100%;
@@ -340,45 +343,49 @@
 
   <nav>
       <a href="index.html" class="nav-logo">
-        <img src="foto/grafiche/logocropped_transparent.png" alt="" class="nav-logo-img" onerror="this.style.display='none'" />
-        
+        <img src="../foto/grafiche/logocropped_transparent.png" alt="" class="nav-logo-img" onerror="this.style.display='none'" />
+
         <svg viewBox="0 0 24 24" stroke="currentColor" fill="none">
           <path d="M36 12H5M5 12l7-7M5 12l7 7"/>
         </svg>
-        <span>Torna al sito</span>
+        <span>Back to Site</span>
       </a>
 
     <ul class="nav-links">
-      <li><a href="index.html#gallery">Gli spazi</a></li>
-      <li><a href="servizi.html">Servizi</a></li>
-      <li><a href="index.html#recensioni">Recensioni</a></li>
-      <li><a href="index.html#posizione">Posizione</a></li>
-      <li><a href="index.html#contatti">Contatti</a></li>
+      <li><a href="index.html#gallery">The spaces</a></li>
+      <li><a href="servizi.html">Services</a></li>
+      <li><a href="index.html#recensioni">Reviews</a></li>
+      <li><a href="index.html#posizione">Location</a></li>
+      <li><a href="index.html#contatti">Contact</a></li>
+
+      <li class="lang-switcher" style="margin-left: 15px; font-weight: 500;">
+        <a href="../it/prenota.html" class="lang-link" style="color: var(--muted); text-decoration: none;">IT</a> | <span class="active-lang" style="color: var(--terracotta);">EN</span>
+      </li>
     </ul>
-    <a href="prenota.html" class="nav-cta">Prenota</a>
+    <a href="prenota.html" class="nav-cta">Book Now</a>
   </nav>
-  
+
 
 
   <div class="viewport-content">
     <div class="cards-wrapper">
       <div class="card">
         <div class="card-header">
-          <span class="eyebrow">Metodi di contatto</span>
-          <h1>Contattaci per richiedere informazioni o per uno sconto speciale</h1>
+          <span class="eyebrow">Contact Channels</span>
+          <h1>Contact us to request information or for a special direct-booking discount</h1>
           <div class="divider center"></div>
         </div>
 
         <div class="btn-list">
 
-          <a href="https://wa.me/39NUMEROQUI?text=Ciao%2C%20vorrei%20informazioni%20per%20prenotare%20Casa%20Bergamo" target="_blank" rel="noopener" class="btn btn-wa">
+          <a href="https://wa.me/39NUMEROQUI?text=Hello%2C%20I%20would%20like%20information%20about%20booking%20Suite%20Anna" target="_blank" rel="noopener" class="btn btn-wa">
             <div class="btn-icon">
               <svg viewBox="0 0 24 24" stroke-width="1.5">
                 <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
               </svg>
             </div>
             <div class="btn-text">
-              <span class="btn-label">Scrivimi su WhatsApp</span>
+              <span class="btn-label">Message on WhatsApp</span>
               <!--<span class="btn-sub">Risposta rapida · Possibilità di sconti</span>--*/ -->
               <span class="phone-number">+39 320 708 0990</span>
             </div>
@@ -391,7 +398,7 @@
               </svg>
             </div>
             <div class="btn-text">
-              <span class="btn-label">Chiamami</span>
+              <span class="btn-label">Call Me</span>
               <span class="phone-number">+39 320 708 0990</span>
             </div>
           </div>
@@ -403,7 +410,7 @@
               </svg>
             </div>
             <div class="btn-text">
-              <span class="btn-label">Scrivimi una mail</span>
+              <span class="btn-label">Send an Email</span>
               <span class="phone-number">crawford.matteo06@gmail.com</span>
             </div>
           </a>
@@ -416,15 +423,15 @@
 
       <div class="card">
         <div class="card-header">
-          <span class="eyebrow">Disponibilità</span>
+          <span class="eyebrow">Availability</span>
         </div>
         <div class="widget-wrapper">
           <div class="vikey-booking-engine-widget"
             data-client-key="vgYVra4W32lmYLJe3_bSxI62J2sbVEw5x384GCmFqt4"
-            data-vikey-language="it">
+            data-vikey-language="en">
           </div>
         </div>
-        
+
         <script async src="https://storage.googleapis.com/vikey-widgets/bookingengine/vikey-booking-engine-widget.js"></script>
       </div>
     </div>
@@ -434,10 +441,10 @@
     <div class="footer-logo">Suite <span>Anna</span></div>
     <p class="footer-copy">2025 Suite Anna — Via Masone 10, Bergamo, IT — CIR 016024CNI00985 — CIN IT016024C24OCYKA5F</p>
 
-    
+
     <div class="footer-links">
       <a href="privacy.html" >Privacy Policy</a>
-      <a href="#">Torna su</a>
+      <a href="#">Back to top</a>
     </div>
   </footer>
 
