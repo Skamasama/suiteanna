@@ -72,20 +72,26 @@
     }
   </style>
   <script>
-    // Automatic language redirection based on browser locale
-    (function() {
+    // Redirect automatico SOLO se esiste già una preferenza salvata
+    // (impostata qui al primo accesso, oppure dai link di switch lingua nelle pagine it/en).
+    // Se non c'è preferenza, l'utente vede i due bottoni e sceglie manualmente:
+    // niente redirect forzato ad ogni visita, niente "flash".
+    (function () {
       try {
-        var userLang = navigator.language || navigator.userLanguage;
-        if (userLang) {
-          userLang = userLang.toLowerCase();
-          if (userLang.startsWith('it')) {
-            window.location.href = './it/';
-          } else {
-            window.location.href = './en/';
-          }
+        var saved = localStorage.getItem('sa_lang');
+        if (saved === 'it' || saved === 'en') {
+          window.location.replace('./' + saved + '/');
+          return;
         }
+        // Prima visita: rileva la lingua del browser, la salva e reindirizza una volta sola.
+        var browserLang = ((navigator.language || navigator.userLanguage || '') + '').toLowerCase();
+        var lang = browserLang.indexOf('it') === 0 ? 'it' : 'en';
+        localStorage.setItem('sa_lang', lang);
+        window.location.replace('./' + lang + '/');
       } catch (e) {
-        console.error("Redirection error:", e);
+        // localStorage non disponibile (privacy mode, ecc.): non facciamo nulla,
+        // l'utente resta sui bottoni e sceglie manualmente. Nessun errore bloccante.
+        console.error('Redirection error:', e);
       }
     })();
   </script>
@@ -95,8 +101,8 @@
   <h1>Suite Anna</h1>
   <p>Benvenuti a Bergamo / Welcome to Bergamo</p>
   <div class="links">
-    <a href="./it/" class="btn">Italiano</a>
-    <a href="./en/" class="btn">English</a>
+    <a href="./it/" class="btn" onclick="try{localStorage.setItem('sa_lang','it')}catch(e){}">Italiano</a>
+    <a href="./en/" class="btn" onclick="try{localStorage.setItem('sa_lang','en')}catch(e){}">English</a>
   </div>
 </body>
 </html>
