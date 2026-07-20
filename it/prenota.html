@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <script type="text/javascript" src="https://embeds.iubenda.com/widgets/f86d6d5c-fe1d-4258-aaf5-5efe4233316e.js"></script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Suite Anna - Prenota</title>
+  <meta name="description" content="Prenota direttamente il tuo soggiorno a Suite Anna, appartamento turistico a Bergamo. Scopri la disponibilità delle date e ottieni la tariffa migliore." />
+  <link rel="canonical" href="https://www.suiteanna.it/it/prenota.html" />
+  <link rel="alternate" hreflang="it" href="https://www.suiteanna.it/it/prenota.html" />
+  <link rel="alternate" hreflang="en" href="https://www.suiteanna.it/en/prenota.html" />
+
+  <link rel="icon" type="image/png" href="../foto/grafiche/logocropped_transparent.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  
+  
+  <link rel="stylesheet" href="../style.css" />
+
+
+  <style>
+
+    /* Sovrascrive lo span di Great Vibes SOLO per questa pagina */
+    .nav-logo span {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-style: normal;
+      white-space: nowrap;         /* impedisce che vada a capo */
+    }
+
+    .nav-logo svg {
+      width: 36px;                 /* freccia più piccola (prima era 20-24px) */
+      height: 12px;                /* freccia più bassa/lunga */
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;           /* leggermente più spessa per compensare */
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;              /* non si restringe mai */
+    }
+
+  
+    body {
+      min-height: 100vh;
+      background: var(--cream);
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;    /* non più center */
+      padding: 0;
+      position: relative;
+      overflow-x: hidden;
+      overflow-y: auto;               /* scroll verticale permesso */
+      box-sizing: border-box;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,169,110,0.08) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none; z-index: 0;
+    }
+
+    .viewport-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: calc(100vh - 90px); /* viewport meno altezza footer */
+      padding: 100px 24px 40px;
+      box-sizing: border-box;
+      flex: 1;
+    }
+
+    footer {
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    /* ── BACK LINK FLOTTANTE ── */
+    .back-link-floating {
+      position: fixed; top: 28px; left: 32px;
+      display: flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none;
+      transition: color 0.2s;
+      z-index: 10;
+    }
+    .back-link-floating:hover { color: var(--terracotta); }
+    .back-link-floating svg { width: 14px; height: 14px; }
+
+
+    
+    /* ── CARDS WRAPPER ── */
+    .cards-wrapper {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;            /* mai a capo */
+      gap: 32px;
+      justify-content: center;
+      align-items: flex-start;
+      width: 100%;
+      max-width: 1200px;
+      height: 100%;                 /* occupa tutto lo spazio disponibile */
+      z-index: 1;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      background: var(--warm-white);
+      width: 100%;
+      max-width: 520px;
+      min-width: 300px;             /* non più piccolo di così */
+      flex: 1 1 auto;               /* si restringe e si allarga */
+      padding: 24px 32px 24px;      /* ridotto un po' */
+      box-shadow: 0 24px 80px rgba(46,42,38,0.10);
+      overflow-y: auto;             /* scroll interno se necessario */
+      max-height: 100%;             /* non supera l'altezza disponibile */
+      box-sizing: border-box;
+    }
+
+    .card-header { text-align: center; margin-bottom: 32px; }
+    .eyebrow {
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--terracotta);
+      display: block; margin-bottom: 12px;
+    }
+    h1 {
+      font-family: var(--font-display);
+      font-size: 26px; font-weight: 300;
+      line-height: 1.15; color: var(--charcoal);
+    }
+    h1 em { font-style: italic; color: var(--terracotta); }
+    .subtitle {
+      margin-top: 16px;
+      font-size: 14px; color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .btn-list {
+      display: flex; flex-direction: column; gap: 14px;
+    }
+
+    .btn {
+      display: flex; align-items: center;
+      gap: 0;
+      width: 100%;
+      border: none; cursor: pointer;
+      text-decoration: none;
+      font-family: var(--font-body);
+      overflow: hidden;
+      transition: box-shadow 0.2s, transform 0.15s;
+      position: relative;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn:active { transform: translateY(1px); }
+
+    .btn-icon {
+      width: 60px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      align-self: stretch;
+      transition: background 0.18s;
+    }
+    .btn-icon svg {
+      width: 22px; height: 22px;
+      fill: none; stroke: currentColor;
+      stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .btn-text {
+      flex: 1;
+      padding: 14px 20px 14px 18px;   /* era 18px 20px 18px 18px */
+      text-align: left;
+      transition: background 0.18s;
+    }
+    .btn-label {
+      display: block;
+      font-size: 13px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .btn-sub {
+      display: block;
+      font-size: 12px; font-weight: 300;
+      margin-top: 2px;
+      opacity: 0.75;
+    }
+
+    .btn-vikey .btn-icon {
+      background: var(--terracotta);
+      color: #fff;
+    }
+    .btn-vikey .btn-text {
+      background: var(--charcoal);
+      color: #fff;
+    }
+    .btn-vikey:hover { box-shadow: 0 8px 28px rgba(181,113,74,0.35); }
+
+    .btn-wa .btn-icon {
+      background: #25D366;
+      color: #fff;
+    }
+    .btn-wa .btn-text {
+      background: var(--cream);
+      color: var(--charcoal);
+      border: 1px solid var(--sand);
+    
+      border-left: none;
+    }
+    .btn-wa:hover { box-shadow: 0 8px 28px rgba(37,211,102,0.22); }
+
+    .btn-phone {
+      cursor: default;
+      pointer-events: none;
+      opacity: 1;
+    }
+    .btn-phone .btn-icon {
+      background: var(--sand);
+      color: var(--muted);
+    }
+    .btn-phone .btn-text {
+      background: var(--warm-white);
+      color: var(--charcoal);
+      border: 1px solid var(--sand);
+      border-left: none;
+    }
+    .phone-number {
+      font-family: var(--font-display);
+      font-size: 22px; font-weight: 300;
+      color: var(--charcoal);
+      display: block;
+      margin-top: 3px;
+      letter-spacing: 0.04em;
+    }
+
+    .btn-email .btn-icon {
+      background: var(--muted);
+      color: #fff;
+    }
+    .btn-email .btn-text {
+      background: var(--warm-white);
+      color: var(--charcoal);
+      border: 1px solid var(--sand);
+      border-left: none;
+    }
+    .btn-email:hover { box-shadow: 0 8px 28px rgba(122,111,101,0.2); }
+    .card-note {
+      margin-top: 36px;
+      text-align: center;
+      font-size: 12px; color: var(--muted);
+      line-height: 1.7;
+    }
+    .card-note a {
+      color: var(--terracotta);
+      border-bottom: 1px solid rgba(181,113,74,0.3);
+      text-decoration: none;
+      transition: border-color 0.2s;
+    }
+    .card-note a:hover { border-color: var(--terracotta); }
+    
+    .widget-wrapper {
+      display: flex;
+      justify-content: center;      /* centra il widget */
+      overflow-x: auto;             /* scroll orizzontale se necessario */
+      width: 100%;
+      padding: 0 4px;
+    }
+
+    .widget-wrapper .vikey-booking-engine-widget {
+      flex-shrink: 0;               /* non si restringe */
+      margin: 0 auto;
+    }
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .card          { animation: fadeUp 0.6s ease both; }
+    .back-link-floating     { animation: fadeUp 0.5s 0.1s ease both; }
+
+    /* ── RESPONSIVE ── */
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1100px) {
+      body {
+        height: auto;
+        overflow-y: auto;
+        padding: 0;
+      }
+      
+      .viewport-content {
+        min-height: auto;
+        padding: 100px 24px 40px;
+      }
+      
+      .cards-wrapper {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        padding: 0;
+      }
+      
+      .card {
+        flex: none;
+        width: 100%;
+        max-width: 520px;
+        min-width: auto;
+        max-height: none;
+        overflow-y: visible;
+      }
+    }
+    @media (max-width: 560px) {
+      .card { padding: 40px 28px 36px; }
+      h1 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+      <a href="index.html" class="nav-logo">
+        <img src="../foto/grafiche/logocropped_transparent.png" alt="" class="nav-logo-img" onerror="this.style.display='none'" />
+        
+        <svg viewBox="0 0 24 24" stroke="currentColor" fill="none">
+          <path d="M36 12H5M5 12l7-7M5 12l7 7"/>
+        </svg>
+        <span>Torna al sito</span>
+      </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html#gallery">Gli spazi</a></li>
+      <li><a href="servizi.html">Servizi</a></li>
+      <li><a href="index.html#recensioni">Recensioni</a></li>
+      <li><a href="index.html#posizione">Posizione</a></li>
+      <li><a href="index.html#contatti">Contatti</a></li>
+
+      <li class="lang-switcher" style="margin-left: 15px; font-weight: 500;">
+        <span class="active-lang" style="color: var(--terracotta);">IT</span> | <a href="../en/prenota.html" class="lang-link" style="color: var(--muted); text-decoration: none;">EN</a>
+      </li>
+    </ul>
+    <a href="prenota.html" class="nav-cta">Prenota</a>
+  </nav>
+  
+
+
+  <div class="viewport-content">
+    <div class="cards-wrapper">
+      <div class="card">
+        <div class="card-header">
+          <span class="eyebrow">Metodi di contatto</span>
+          <h1>Contattaci per richiedere informazioni o per uno sconto speciale</h1>
+          <div class="divider center"></div>
+        </div>
+
+        <div class="btn-list">
+
+          <a href="https://wa.me/39NUMEROQUI?text=Ciao%2C%20vorrei%20informazioni%20per%20prenotare%20Casa%20Bergamo" target="_blank" rel="noopener" class="btn btn-wa">
+            <div class="btn-icon">
+              <svg viewBox="0 0 24 24" stroke-width="1.5">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+              </svg>
+            </div>
+            <div class="btn-text">
+              <span class="btn-label">Scrivimi su WhatsApp</span>
+              <!--<span class="btn-sub">Risposta rapida · Possibilità di sconti</span>--*/ -->
+              <span class="phone-number">+39 320 708 0990</span>
+            </div>
+          </a>
+
+          <div class="btn btn-phone">
+            <div class="btn-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.36 12 19.79 19.79 0 0 1 1.27 3.4 2 2 0 0 1 3.24 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 5.91 5.91l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+            <div class="btn-text">
+              <span class="btn-label">Chiamami</span>
+              <span class="phone-number">+39 320 708 0990</span>
+            </div>
+          </div>
+          <a href="mailto:crawford.matteo06@gmail.com" class="btn btn-email">
+            <div class="btn-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div class="btn-text">
+              <span class="btn-label">Scrivimi una mail</span>
+              <span class="phone-number">crawford.matteo06@gmail.com</span>
+            </div>
+          </a>
+        </div>
+
+        <!--<p class="card-note">
+          <a href="mailto:crawford.matteo06@gmail.com">crawford.matteo06@gmail.com</a> · Check-in dalle 15:00, check-out entro le 10:30
+        </p>-->
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span class="eyebrow">Disponibilità</span>
+        </div>
+        <div class="widget-wrapper">
+          <div class="vikey-booking-engine-widget"
+            data-client-key="vgYVra4W32lmYLJe3_bSxI62J2sbVEw5x384GCmFqt4"
+            data-vikey-language="it">
+          </div>
+        </div>
+        
+        <script async src="https://storage.googleapis.com/vikey-widgets/bookingengine/vikey-booking-engine-widget.js"></script>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-logo">Suite <span>Anna</span></div>
+    <p class="footer-copy">2025 Suite Anna — Via Masone 10, Bergamo, IT — CIR 016024CNI00985 — CIN IT016024C24OCYKA5F</p>
+
+    
+    <div class="footer-links">
+      <a href="privacy.html" >Privacy Policy</a>
+      <a href="#">Torna su</a>
+    </div>
+  </footer>
+
+</body>
+</html>
