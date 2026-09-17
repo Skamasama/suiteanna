@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suite Anna Bergamo</title>
+  <meta name="description" content="Benvenuti a Suite Anna, appartamento turistico a Bergamo vicino a Città Alta. Scegli la tua lingua / Welcome to Suite Anna, holiday apartment in Bergamo near Città Alta. Select your language." />
+  <link rel="canonical" href="https://www.suiteanna.it/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Suite Anna Bergamo" />
+  <meta property="og:description" content="Benvenuti a Suite Anna, appartamento turistico a Bergamo vicino a Città Alta. Welcome to Suite Anna, holiday apartment in Bergamo near Città Alta." />
+  <meta property="og:image" content="https://www.suiteanna.it/foto/compressi/FotoPrincipale.webp" />
+  <meta property="og:url" content="https://www.suiteanna.it/" />
+  <link rel="alternate" hreflang="it" href="https://www.suiteanna.it/it/" />
+  <link rel="alternate" hreflang="en" href="https://www.suiteanna.it/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://www.suiteanna.it/" />
+  <link rel="icon" type="image/png" href="foto/grafiche/logocropped_transparent.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --charcoal: #2e2a26;
+      --cream: #f9f5f0;
+      --terracotta: #b5714a;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Jost', sans-serif;
+      background-color: var(--cream);
+      color: var(--charcoal);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+    .logo {
+      width: 120px;
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      font-weight: 300;
+      margin-bottom: 12px;
+      letter-spacing: 0.05em;
+    }
+    p {
+      color: #666;
+      font-size: 15px;
+      margin-bottom: 32px;
+      max-width: 400px;
+      line-height: 1.6;
+    }
+    .links {
+      display: flex;
+      gap: 20px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 32px;
+      border: 1px solid var(--terracotta);
+      color: var(--terracotta);
+      text-decoration: none;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-size: 13px;
+      transition: all 0.3s;
+    }
+    .btn:hover {
+      background-color: var(--terracotta);
+      color: #fff;
+    }
+  </style>
+  <script>
+    // Redirect automatico SOLO se esiste già una preferenza salvata
+    // (impostata qui al primo accesso, oppure dai link di switch lingua nelle pagine it/en).
+    // Se non c'è preferenza, l'utente vede i due bottoni e sceglie manualmente:
+    // niente redirect forzato ad ogni visita, niente "flash".
+    (function () {
+      try {
+        var saved = localStorage.getItem('sa_lang');
+        if (saved === 'it' || saved === 'en') {
+          window.location.replace('./' + saved + '/');
+          return;
+        }
+        // Prima visita: rileva la lingua del browser, la salva e reindirizza una volta sola.
+        var browserLang = ((navigator.language || navigator.userLanguage || '') + '').toLowerCase();
+        var lang = browserLang.indexOf('it') === 0 ? 'it' : 'en';
+        localStorage.setItem('sa_lang', lang);
+        window.location.replace('./' + lang + '/');
+      } catch (e) {
+        // localStorage non disponibile (privacy mode, ecc.): non facciamo nulla,
+        // l'utente resta sui bottoni e sceglie manualmente. Nessun errore bloccante.
+        console.error('Redirection error:', e);
+      }
+    })();
+  </script>
+</head>
+<body>
+  <img src="foto/grafiche/logocropped_transparent.png" alt="Suite Anna Logo" class="logo">
+  <h1>Suite Anna</h1>
+  <p>Benvenuti a Bergamo / Welcome to Bergamo</p>
+  <div class="links">
+    <a href="./it/" class="btn" onclick="try{localStorage.setItem('sa_lang','it')}catch(e){}">Italiano</a>
+    <a href="./en/" class="btn" onclick="try{localStorage.setItem('sa_lang','en')}catch(e){}">English</a>
+  </div>
+</body>
+</html>
