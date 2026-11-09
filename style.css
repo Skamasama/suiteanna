@@ -155,3 +155,54 @@ footer {
   nav { padding: 20px 24px; }
   .nav-links { display: none; }
 }
+
+/* ─── LANG MENU ──────────────────────────────────────────── */
+.lang-menu {
+  position: relative;
+  margin-right: 24px;
+}
+.lang-toggle {
+  background: none;
+  border: 1px solid transparent;
+  padding: 4px;
+  cursor: pointer;
+  line-height: 0;
+  border-radius: 2px;
+}
+.lang-toggle:hover,
+.lang-menu.open .lang-toggle { border-color: var(--terracotta); }
+.lang-toggle img,
+.lang-option img {
+  width: 24px;
+  height: 18px;
+  object-fit: cover;
+  display: block;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.08);
+}
+.lang-options {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 140px;
+  padding: 6px;
+  background: var(--linen);
+  border: 1px solid rgba(212,196,176,0.5);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+.lang-menu.open .lang-options { display: flex; }
+.lang-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 8px;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+}
+.lang-option:hover,
+.lang-option[aria-current="page"] { color: var(--terracotta); }

@@ -694,10 +694,36 @@
       <li><a href="#posizione">Posizione</a></li>
       <li><a href="#contatti">Contatti</a></li>
 
-      <li class="lang-switcher" style="margin-left: 15px; font-weight: 500;">
-        <span class="active-lang" style="color: var(--terracotta);">IT</span> | <a href="../en/" class="lang-link" style="color: var(--muted); text-decoration: none;">EN</a>
-      </li>
+      
     </ul>
+        <div class="lang-menu">
+      <button type="button" class="lang-toggle" aria-label="Cambia lingua" aria-expanded="false">
+        <img src="../foto/flags/it.svg" alt="Italiano" />
+      </button>
+      <div class="lang-options">
+        <a href="../it/" class="lang-option" aria-current="page" onclick="try{localStorage.setItem('sa_lang','it')}catch(e){}">
+          <img src="../foto/flags/it.svg" alt="" /> Italiano
+        </a>
+        <a href="../en/" class="lang-option" onclick="try{localStorage.setItem('sa_lang','en')}catch(e){}">
+          <img src="../foto/flags/en.svg" alt="" /> English
+        </a>
+      </div>
+    </div>
+    <script>
+      (function () {
+        var menu = document.querySelector('.lang-menu');
+        var btn = menu.querySelector('.lang-toggle');
+        btn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          var open = menu.classList.toggle('open');
+          btn.setAttribute('aria-expanded', open);
+        });
+        document.addEventListener('click', function () {
+          menu.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+        });
+      })();
+    </script>
     <a href="prenota.html" class="nav-cta">Prenota</a>
   </nav>
 
